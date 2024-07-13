@@ -117,7 +117,7 @@ class Processer:
 
     def find_clusters(df, tfidf_df, distance_threshhold=1):
         try:
-            ac = AgglomerativeClustering(distance_threshold=distance_threshhold, n_clusters=None).fit(tfidf_df)
+            ac = AgglomerativeClustering(distance_threshold=distance_threshhold, n_clusters=None).fit(np.asarray(tfidf_df))
             articles_labeled = ac.fit_predict(tfidf_df)
             cluster_count = {}
             for label in range(0, len(set(ac.labels_))):
